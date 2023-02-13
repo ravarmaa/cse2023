@@ -13,6 +13,10 @@ pygame.display.set_caption("Mass-Spring System Simulation")
 # Generated mostly by ChatGPT.
 # A lot of hardcoded stuff.
 
+# You can control the mass with KEYs. 
+# Use SPACE to stop the mass (buggy atm)
+# You can drag the mass around with the MOUSE
+
 # Important parameters should be all here
 
 mass = 1
