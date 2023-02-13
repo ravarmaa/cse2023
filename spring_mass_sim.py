@@ -30,6 +30,8 @@ v_y = 0
 dt = 0.1
 t = 0
 
+keyboard_force = 10
+
 dragging = False
 running = True
 
@@ -50,13 +52,13 @@ while running:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        v_x -= 1
+        v_x -= keyboard_force
     if keys[pygame.K_RIGHT]:
-        v_x += 1
+        v_x += keyboard_force
     if keys[pygame.K_UP]:
-        v_y -= 1
+        v_y -= keyboard_force
     if keys[pygame.K_DOWN]:
-        v_y += 1
+        v_y += keyboard_force
 
     if keys[pygame.K_SPACE]:
         x, y = 250, 250
