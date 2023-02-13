@@ -94,6 +94,9 @@ while running:
     pygame.draw.line(screen, (255, 0, 0), (220, 250), (280, 250), 2)
     pygame.draw.line(screen, (255, 0, 0), (250, 220), (250, 280), 2)
 
+    pygame.draw.line(screen, (0, 255, 0), (int(x), int(y)), (int(x+v_x/5), int(y+v_y/5)), 2)
+    pygame.draw.line(screen, (0, 0, 255), (int(x), int(y)), (int(x+acceleration_x/10), int(y+acceleration_y/10)), 2)
+
 
     fig = plt.figure()
     plt.plot(time_data, displacement_data_x, label="X offset")
