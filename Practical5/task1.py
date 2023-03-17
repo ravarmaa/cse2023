@@ -2,8 +2,20 @@ import control as ct
 import matplotlib.pyplot as plt
 import numpy as np
 
-G = ct.zpk([], [-0.5 - 1j, -0.5 + 1j, -1 + 0.5j, -1 - 0.5j], 0.001)
+# G = ct.zpk([1],[0], gain=1)
+
+s = ct.tf('s')
+
+G1 = 3
+G2 = 5/s
+G3 = s
+G4 = 3/(s**2 - 5*s + 6)
+
+G = (G1+G2+G3)*G4
+
 print(G)
+
+G = (s+1)/s
 
 # y, t = ct.step_response(G)
 

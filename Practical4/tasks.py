@@ -28,7 +28,7 @@ G2 = 5/s
 G3 = s
 G4 = 3/(s**2 - 5*s + 6)
 
-sys = ct.feedback((G1+G2+G3)*G4)
+sys = ct.feedback(6.222*(G1+G2+G3)*G4)
 
 print(sys)
 
