@@ -17,7 +17,7 @@ d = 50 / 100  # infected -> dead
 e = 25 / 100  # infected -> immune
 f = 1 / 100  # immune -> dead
 
-u = np.array([[100,  # new healthy
+u = np.array([[10,  # new healthy
               10]])  # new infected
 
 # z1_dot = -a*z1 - b*z1 - c*z1 + u1  - healthy people change
@@ -51,8 +51,7 @@ days = np.linspace(0, no_of_days, no_of_days + 1)
 
 time, outputs = ct.initial_response(sys, T=days, X0=z0)
 print(outputs)
-u = np.tile(u, (len(days), 1))
-u = np.transpose(u)
+
 
 fig, (ax1, ax2) = plt.subplots(1, 2)
 
@@ -65,6 +64,10 @@ ax1.plot(time, outputs[2], label="Immune")
 ax1.plot(time, total_people, label="Population")
 ax1.legend()
 
+# Putting u in
+u = np.tile(u, (len(days), 1))
+u = np.transpose(u)
+
 time, outputs = ct.forced_response(sys, T=days, U=u, X0=z0)
 
 total_people = outputs[0] + outputs[1] + outputs[2]
@@ -76,35 +79,35 @@ ax2.plot(time, total_people, label="Population")
 ax2.legend()
 plt.show()
 
-# # Problem 2
-# z0 = np.array([[0],
-#                [0],
-#                [0]])
+# Problem 2
+z0 = np.array([[0],
+               [0],
+               [0]])
 
-# R = 1000
-# C1 = 10e-9
-# C2 = 100e-9
-# L = 0.1
+R = 1000
+C1 = 10e-9
+C2 = 100e-9
+L = 0.1
 
-# A = np.array([[-1 / (R * C1), 0, -1 / C1],
-#               [0, 0, 1 / C2],
-#               [1 / L, -1 / L, 0]])
+A = np.array([[-1 / (R * C1), 0, -1 / C1],
+              [0, 0, 1 / C2],
+              [1 / L, -1 / L, 0]])
 
-# B = np.array([[1 / (R * C1)],
-#               [0],
-#               [0]])
+B = np.array([[1 / (R * C1)],
+              [0],
+              [0]])
 
-# C = np.array([[1, 0, 0],
-#               [0, 1, 0],
-#               [1, -1, 0]])
+C = np.array([[1, 0, 0],
+              [0, 1, 0],
+              [1, -1, 0]])
 
-# D = 0
+D = 0
 
-# sys = ct.ss(A, B, C, D)
-# time, outputs = ct.step_response(sys)
-
-# plt.plot(time, outputs[0][0], label="v1")
-# plt.plot(time, outputs[1][0], label="v2")
-# plt.plot(time, outputs[2][0], label="v3")
-# plt.legend()
-# plt.show()
+sys = ct.ss(A, B, C, D)
+time, outputs = ct.step_response(sys)
+print(outputs)
+plt.plot(time, outputs[0][0], label="v1")
+plt.plot(time, outputs[1][0], label="v2")
+plt.plot(time, outputs[2][0], label="v3")
+plt.legend()
+plt.show()
