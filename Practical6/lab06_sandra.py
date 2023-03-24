@@ -79,6 +79,9 @@ ax2.plot(time, total_people, label="Population")
 ax2.legend()
 plt.show()
 
+# exit()
+
+
 # Problem 2
 z0 = np.array([[0],
                [0],
