@@ -105,7 +105,7 @@ D = 0
 
 sys = ct.ss(A, B, C, D)
 time, outputs = ct.step_response(sys)
-print(outputs)
+
 plt.plot(time, outputs[0][0], label="v1")
 plt.plot(time, outputs[1][0], label="v2")
 plt.plot(time, outputs[2][0], label="v3")
